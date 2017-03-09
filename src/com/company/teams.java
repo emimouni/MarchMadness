@@ -6,13 +6,15 @@ package com.company;
 public class teams {
     public String name;
     public double winPercent;
-    public teams(String name, double winPercent){
-
+    public teams(String n, double w){
+        name = n;
+        winPercent = w;
     }
+
     public String getName(){
-        return name;
+        return this.name;
     }
     public double getWinPercentage(){
-        return winPercent;
+        return this.winPercent;
     }
 }
