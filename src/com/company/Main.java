@@ -83,7 +83,7 @@ public class Main {
         nextRound(West);
         printRound(South,East,Midwest,West, e);
         System.out.println(" ");
-
+ 
         txt.close();
     }
     public static void nextRound(ArrayList e){
