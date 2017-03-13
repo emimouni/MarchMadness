@@ -2,7 +2,7 @@ package com.company;
 import java.util.*;
 import java.io.*;
 public class Main {
-
+ 
     public static void main(String[] args) throws IOException{
         Scanner txt = new Scanner(new File ("Teams.txt"));
         ArrayList<teams> South = new ArrayList<teams>();
