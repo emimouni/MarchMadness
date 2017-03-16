@@ -2,7 +2,7 @@ package com.company;
 import java.util.*;
 import java.io.*;
 public class Main {
- 
+
     public static void main(String[] args) throws IOException{
         Scanner txt = new Scanner(new File ("Teams.txt"));
         ArrayList<teams> South = new ArrayList<teams>();
@@ -25,7 +25,7 @@ public class Main {
             double winPercentage = Double.parseDouble(a);
             double schedStrength = Double.parseDouble(b);
             teams x = new teams(name, winPercentage, schedStrength, ppt, dpt);
-            South.add(x);
+            East.add(x);
         }
         for (int i = 16; i<32; i++){
             String s = txt.nextLine();
@@ -40,7 +40,7 @@ public class Main {
             double winPercentage = Double.parseDouble(a);
             double schedStrength = Double.parseDouble(b);
             teams x = new teams(name, winPercentage, schedStrength, ppt, dpt);
-            East.add(x);
+            West.add(x);
         }
         for (int i = 32; i<48; i++){
             String s = txt.nextLine();
@@ -70,7 +70,7 @@ public class Main {
             double winPercentage = Double.parseDouble(a);
             double schedStrength = Double.parseDouble(b);
             teams x = new teams(name, winPercentage, schedStrength, ppt, dpt);
-            West.add(x);
+            South.add(x);
         }
         int e = 32;
         nextRound(South);
@@ -78,34 +78,34 @@ public class Main {
         nextRound(Midwest);
         nextRound(West);
         System.out.println(" ");
-        printRound(South,East,Midwest,West,e);
+        printRound(East,West,Midwest,South,e);
         e/=2;
         nextRound(South);
         nextRound(East);
         nextRound(Midwest);
         nextRound(West);
         System.out.println(" ");
-        printRound(South,East,Midwest,West,e);
+        printRound(East,West,Midwest,South,e);
         e/=2;
         nextRound(South);
         nextRound(East);
         nextRound(Midwest);
         nextRound(West);
         System.out.println(" ");
-        printRound(South,East,Midwest,West, e);
+        printRound(East,West,Midwest,South,e);
         e/=2;
         nextRound(South);
         nextRound(East);
         nextRound(Midwest);
         nextRound(West);
         System.out.println(" ");
-        printRound(South,East,Midwest,West, e);
+        printRound(East,West,Midwest,South,e);
         e/=2;
         ArrayList<teams> last = new ArrayList<teams>();
-        last.add((South.get(0)));
-        last.add(East.get(0));
-        last.add(Midwest.get(0));
+        last.add((East.get(0)));
         last.add(West.get(0));
+        last.add(Midwest.get(0));
+        last.add(South.get(0));
         nextRound(last);
         System.out.println(" ");
         printFinalFour(last, e);
@@ -120,13 +120,13 @@ public class Main {
         for (int j = 0; j<e.size()-1; j++){
             teams dummy  = (teams)e.get(j);
             double x = dummy.getWinPercentage() * dummy.getStrengthOfSchedule();
-            double z = (dummy.getPpt() + dummy.getDpt()) / 200;
-            x/=z;
+            double z = (dummy.getPpt() - dummy.getDpt()) / 100;
+            double i =x*z;
             teams dummy1 = (teams)e.get(j+1);
-            double y = dummy1.getWinPercentage() * dummy.getStrengthOfSchedule();
-            double a = (dummy1.getPpt() + dummy1.getDpt()) / 200;
-            x/=a;
-            if (x>y){
+            double y = dummy1.getWinPercentage() * dummy1.getStrengthOfSchedule();
+            double a = (dummy1.getPpt() - dummy1.getDpt()) / 100;
+            double k = y*a;
+            if (i>k){
                 e.remove(j+1);
             }else{
                 e.remove(j);
